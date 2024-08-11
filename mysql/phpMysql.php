@@ -79,6 +79,10 @@ if (isset($_POST["cari"])) {
         .tombol input:hover {
             background-color: #0056b3;
         }
+        .img {
+            width: 5%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
@@ -115,7 +119,7 @@ if (isset($_POST["cari"])) {
                     <a href="edit.php?id=<?= urlencode($mhs["id"]); ?>">Ubah</a> ||
                     <a href="hapus.php?id=<?= urlencode($mhs["id"]); ?>" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                 </td>
-                <td><?= $mhs["gambar"] ?></td>
+                <td><img src="img/<?= $mhs["gambar"]; ?>" alt="" style="width: 100px; height: auto;"></td>
             </tr>
         <?php endforeach; ?>
     </table>
