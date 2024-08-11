@@ -1,5 +1,21 @@
 <?php 
+session_start();
 include "functions.php";
+
+// CEK COOKIE
+if (isset($_COOKIE["id"]) && isset($_COOKIE["key"])) {
+    $id = $_COOKIE["id"];
+    $key = $_COOKIE["key"];
+
+    // ambil username berdasarkan ID
+    $result = mysqli_query($connection, "SELECT username FROM user WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+
+    // cek cookie dan username
+    if ($key === hash('sha256', $row['username'])) {
+        $_SESSION['login'] = true;
+    }
+}
 if (isset($_POST["login"])) {
     if (login($_POST) > 0) {
         echo "
@@ -45,6 +61,12 @@ if (isset($_POST["login"])) {
             <li>
                 <label for="password">Password :</label>
                 <input type="password" name="password" id="password">
+            </li>
+        </ul>
+        <ul>
+            <li></li>
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Remember me</label>
             </li>
         </ul>
         <ul>

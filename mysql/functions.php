@@ -154,6 +154,15 @@ function login ($data) {
         // Cek password
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row["password"])) {
+            // Set session
+            $_SESSION["login"] = true;
+
+            // cek remember me
+            if (isset($data["remember"])) {
+                // buat cookie
+                setcookie('id', $data['id'], time() + 3600);
+                setcookie('key', hash('sha256', $data['username']), time() + 3600);
+            }
             header("Location: phpMysql.php");
             exit;
         }

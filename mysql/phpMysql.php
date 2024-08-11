@@ -1,4 +1,10 @@
 <?php 
+// session
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
 require "functions.php";
 $mahasiswa = query("SELECT * FROM mahasiswa");
 // tombol cari ditekan
@@ -97,6 +103,8 @@ if (isset($_POST["cari"])) {
     <div class="tombol">
         <a href="tambah.php"><input type="button" value="Tambah"></a>
     </div>
+    <!-- logout -->
+    <a href="logout.php">Logout</a>
 
     <table>
         <tr>

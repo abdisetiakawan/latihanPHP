@@ -1,4 +1,10 @@
 <?php 
+// session
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
 include "functions.php";
 if (isset($_POST["submit"])) {
     if (tambah($_POST) > 0) {
