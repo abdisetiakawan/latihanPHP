@@ -143,5 +143,22 @@ function registrasi($data) {
     mysqli_query($conn, "INSERT INTO user (username, password) VALUES('$username', '$password')");
     return mysqli_affected_rows($conn);
 }
+
+function login ($data) {
+    global $conn;
+    $username = $data["username"];
+    $password = $data["password"];
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+    // Cek username
+    if (mysqli_num_rows($result) === 1) {
+        // Cek password
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row["password"])) {
+            header("Location: phpMysql.php");
+            exit;
+        }
+    }
+    return false;
+}
 ?>
 
