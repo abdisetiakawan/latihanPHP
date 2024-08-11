@@ -44,6 +44,9 @@ if (isset($_POST["submit"])) {
         <label for="tanggalLahir">TANGGAL LAHIR</label>
         <input type="date" name="tanggalLahir" id="tanggalLahir" value="<?= $mhs["tanggal_lahir"]; ?>">
         <br>
+        <label for="gambar">gambar</label>
+        <input type="text" name="gambar" id="gambar" value="<?= $mhs["gambar"]; ?>">
+        <br>
         <button type="submit" name="submit">submit</button>
     </form>
 </body>

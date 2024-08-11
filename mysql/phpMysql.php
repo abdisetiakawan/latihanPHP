@@ -83,7 +83,6 @@ if (isset($_POST["cari"])) {
 </head>
 <body>
     <h1>Daftar Mahasiswa</h1>
-    
     <div class="form-container">
         <form action="" method="post">
             <input type="text" name="keyword" placeholder="Cari mahasiswa..." autofocus>
@@ -103,6 +102,7 @@ if (isset($_POST["cari"])) {
             <th>TANGGAL LAHIR</th>
             <th>JURUSAN</th>
             <th>EDIT</th>
+            <th>GAMBAR</th>
         </tr>
         <?php foreach ($mahasiswa as $mhs) : ?>
             <tr>
@@ -115,6 +115,7 @@ if (isset($_POST["cari"])) {
                     <a href="edit.php?id=<?= urlencode($mhs["id"]); ?>">Ubah</a> ||
                     <a href="hapus.php?id=<?= urlencode($mhs["id"]); ?>" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                 </td>
+                <td><?= $mhs["gambar"] ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

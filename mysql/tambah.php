@@ -28,7 +28,7 @@ if (isset($_POST["submit"])) {
 <body>
     <h1>Tambah Data</h1>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <ul>
             <li>
                 <label for="nama">Nama : </label><br>
@@ -45,6 +45,10 @@ if (isset($_POST["submit"])) {
             <li>
                 <label for="jurusan">Jurusan : </label><br>
                 <input type="text" name="jurusan" id="jurusan" required>
+            </li>
+            <li>
+                <label for="gambar">gambar : </label><br>
+                <input type="file" name="gambar" id="gambar" required>
             </li>
             <li>
                 <button type="submit" name="submit">Tambahkan</button>

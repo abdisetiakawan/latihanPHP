@@ -17,7 +17,8 @@ function tambah($data){
     $npm = htmlspecialchars($data["npm"]);
     $tanggalLahir = htmlspecialchars($data["tanggalLahir"]);
     $jurusan = htmlspecialchars($data["jurusan"]);
-    $query = "INSERT INTO mahasiswa(nama, npm, tanggal_lahir, jurusan) VALUES ('$nama', '$npm', '$tanggalLahir', '$jurusan')";
+    $gambar = htmlspecialchars($data["gambar"]);
+    $query = "INSERT INTO mahasiswa(nama, npm, tanggal_lahir, jurusan, gambar) VALUES ('$nama', '$npm', '$tanggalLahir', '$jurusan', '$gambar')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
@@ -34,11 +35,13 @@ function edit($data) {
     $npm = htmlspecialchars($data["npm"]); 
     $tanggalLahir = htmlspecialchars($data["tanggalLahir"]);
     $jurusan = htmlspecialchars($data["jurusan"]);
+    $gambar = htmlspecialchars($data["gambar"]);
     $query = "UPDATE mahasiswa SET
                 nama = '$nama',
                 npm = '$npm',
                 tanggal_lahir = '$tanggalLahir',
-                jurusan = '$jurusan'
+                jurusan = '$jurusan',
+                gambar = '$gambar'
                 WHERE id = $id
                 ";
     mysqli_query($conn, $query);
